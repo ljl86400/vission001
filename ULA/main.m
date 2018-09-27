@@ -8,9 +8,9 @@ darad = pi/180;
 ULAdata.sampleFrequency = 44100;
 
 
-run D:\matlab\work\micArrayVision001\ULA\ULAmicInfo.m
+run D:\matlab\work\micArrayVision001\ULA\ULAmicInfo.m;
 run D:\matlab\work\micArrayVision001\ULA\constructionULAData.m;
-run D:\matlab\work\micArrayVision001\ULA\vadStatusSet.m
+run D:\matlab\work\micArrayVision001\ULA\vadStatusSet.m;
 
 
 %% 读取音频数据
@@ -49,7 +49,7 @@ for iloop1 = 1:numTSteps
     DOAvector(iloop1) = angle(sequence);
     
     % 固定角度的波束形成处理
-    [audioBFout] = MMSEBF(audioDataArray,ULAmicArray,ULAdata.theta(2));
+    [audioBFout] = MMSEBF(audioDataArray,ULAmicArray,ULAdata.theta(2),frameLength);
     audioBFoutFinal((iloop1 - 1)*frameLength + 1:iloop1 * frameLength ) = audioBFout;
     
     % 回声消除处理

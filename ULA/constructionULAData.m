@@ -8,7 +8,7 @@ ULAdata.samplesNumber = ULAdata.sampleFrequency * ULAdata.audioTime;
 
 
 ULAdata.signalNumber = 2;
-ULAdata.theta = [-45 0 45];            % 声源入射角度,第一个元素是干扰信号角度，第二个元素是主信号角度
+ULAdata.theta = [-45 0 30];            % 声源入射角度,第一个元素是干扰信号角度，第二个元素是主信号角度
                                             % 第三个元素是回放信号的角度
 
 % 产生干扰信号

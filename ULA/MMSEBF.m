@@ -1,9 +1,14 @@
 % 固定方向波束形成，波束朝向thetaMainlobe
 
-function [audioBFout] = MMSEBF(audioDataArray,ULAmicArray,thetaMainlobe)
+function [audioBFout] = MMSEBF(audioDataArray,ULAmicArray,thetaMainlobe,frameLength)
 
 thetaMainlobe = thetaMainlobe * pi/180;
-w = exp(1j*2*pi*sin(thetaMainlobe)*ULAmicArray.distanceVactor');     % 4*1 权向量
+% w = exp(1j*2*pi*sin(thetaMainlobe)*ULAmicArray.distanceVactor');     % 4*1 权向量
+Rxx = (audioDataArray*audioDataArray')/frameLength;
+Rxxinv = pinv(Rxx);
+aMain = exp(1j*2*pi*sin(thetaMainlobe)*ULAmicArray.distanceVactor');
+totalInv = pinv(aMain'*Rxxinv*aMain);
+w = 4*Rxxinv * aMain * totalInv;
 
 theta=linspace(-pi/2,pi/2,200);
 f0  = zeros(1,length(theta));
